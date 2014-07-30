@@ -1,0 +1,23 @@
+﻿extends layout
+
+ 
+block content
+    h1 Blob listing for #{container}
+ 
+    if error
+        h3= error
+ 
+    if blobs
+        h3= container
+        table
+            tr
+                th Name
+                th Properties
+            - each blob in blobs
+                tr
+                    td= blob.name
+                    td
+                        ul
+                            - each value, name in blob.properties
+                                if value
+                                    li= name + ":" + value
